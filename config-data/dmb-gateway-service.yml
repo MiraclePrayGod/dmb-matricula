@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka
+  instance:
+    hostname: localhost
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enable: true
+      routes:
+        - id: dmb-curso  # El nombre de la ruta para enrutar las solicitudes
+          uri: lb://dmb-curso  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
+          predicates:
+           - Path=/cursos/**
+
