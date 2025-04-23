@@ -28,31 +28,24 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-        <spring-cloud.version>2024.0.1</spring-cloud.version> <!-- Definir la versión de Spring Cloud -->
+        <spring-cloud.version>2024.0.1</spring-cloud.version>
     </properties>
-
     <dependencies>
-        <!-- Spring Boot Starter for Eureka Server -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
-        <!-- Spring Cloud Config -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-
-        <!-- Spring Boot Starter Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <!-- Manage Spring Cloud Dependencies -->
     <dependencyManagement>
         <dependencies>
             <dependency>

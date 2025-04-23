@@ -17,78 +17,28 @@ import java.util.Optional;
 public class MatriculaServiceImpl implements MatriculaService {
 
 
-    private final MatriculaRepository matriculaRepository;
-    private final EstudianteFeign estudianteFeign;
-    private final CursoFeign cursoFeign;
-
-    @Autowired
-    public MatriculaServiceImpl(MatriculaRepository matriculaRepository,
-                                EstudianteFeign estudianteFeign,
-                                CursoFeign cursoFeign) {
-        this.matriculaRepository = matriculaRepository;
-        this.estudianteFeign = estudianteFeign;
-        this.cursoFeign = cursoFeign;
-    }
-    // Listar todas las matrículas
     @Override
     public List<Matricula> listar() {
-        return matriculaRepository.findAll();
+        return List.of();
     }
 
-    // Buscar una matrícula por ID
     @Override
     public Optional<Matricula> buscar(Integer id) {
-        return matriculaRepository.findById(id);
+        return Optional.empty();
     }
 
-    // Guardar una nueva matrícula
     @Override
     public Matricula guardar(Matricula matricula) {
-        // Verificar que el estudiante esté activo
-        boolean estudianteActivo = verificarEstudianteActivo(matricula.getEstudiante().getId());
-        if (!estudianteActivo) {
-            throw new RuntimeException("El estudiante no está activo");
-        }
-        // Verificar la capacidad del curso
-        boolean capacidadDisponible = verificarCapacidadCurso(matricula.getCurso().getId());
-        if (!capacidadDisponible) {
-            throw new RuntimeException("El curso no tiene capacidad disponible");
-        }
-
-        // Guardar la nueva matrícula
-        return matriculaRepository.save(matricula);
+        return null;
     }
 
-    // Actualizar una matrícula existente
     @Override
     public Matricula actualizar(Integer id, Matricula matricula) {
-        Optional<Matricula> existingMatricula = matriculaRepository.findById(id);
-        if (existingMatricula.isPresent()) {
-            Matricula matriculaActualizada = existingMatricula.get();
-            matriculaActualizada.setEstudiante(matricula.getEstudiante());
-            matriculaActualizada.setCurso(matricula.getCurso());
-            matriculaActualizada.setCiclo(matricula.getCiclo());
-            matriculaActualizada.setFechaMatricula(matricula.getFechaMatricula());
-            return matriculaRepository.save(matriculaActualizada);
-        } else {
-            throw new RuntimeException("Matrícula no encontrada");
-        }
+        return null;
     }
 
-    // Eliminar una matrícula por ID
     @Override
     public void eliminar(Integer id) {
-        matriculaRepository.deleteById(id);
-    }
 
-    // Verificar si el estudiante está activo
-    private boolean verificarEstudianteActivo(Integer estudianteId) {
-        EstudianteDTO estudiante = estudianteFeign.obtenerEstudiantePorId(estudianteId);
-        return "activo".equals(estudiante.getEstado());  // Verificar que el estado del estudiante sea "activo"
-    }
-
-    // Verificar si el curso tiene capacidad disponible
-    private boolean verificarCapacidadCurso(Integer cursoId) {
-        return cursoFeign.verificarCapacidadCurso(cursoId);  // Verificar la capacidad del curso mediante Feign
     }
 }

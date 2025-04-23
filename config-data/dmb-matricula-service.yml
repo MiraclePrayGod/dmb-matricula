@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: ms-matricula
   datasource:
     url: jdbc:postgresql://localhost:5432/ms-matricula
     username: postgres
@@ -9,15 +7,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
-    open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 
 server:
-  port: 8081
+  port: 8086
 
 springdoc:
   api-docs:
