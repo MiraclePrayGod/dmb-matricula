@@ -1,5 +1,5 @@
 package com.example.dmbmatriculaservice.feing;
 
-public interface CursoFeign {
-
+public class CursoFeing {
+    
 }
