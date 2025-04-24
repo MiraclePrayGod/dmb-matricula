@@ -12,48 +12,32 @@ import java.util.Optional;
 
 @Service
 public class CursoServiceImpl implements CursoService {
-
-
     @Autowired
     private CursoRepository cursoRepository;
 
-    // Listar todos los cursos
     @Override
     public List<Curso> listar() {
-        return cursoRepository.findAll();  // Retorna todos los cursos almacenados
+        return cursoRepository.findAll();
     }
 
-    // Buscar un curso por ID
     @Override
     public Optional<Curso> buscar(Integer id) {
-        return cursoRepository.findById(id);  // Devuelve un Optional que puede contener el curso si se encuentra
+        return cursoRepository.findById(id);
     }
 
-    // Guardar un nuevo curso
     @Override
-    public Curso guardar(Curso curso) {
-        return cursoRepository.save(curso);  // Guarda el curso en la base de datos
+    public Curso guardar(Curso matricula) {
+        return cursoRepository.save(matricula);
     }
 
-    // Actualizar un curso existente
     @Override
     public Curso actualizar(Integer id, Curso curso) {
-        Optional<Curso> existingCourse = cursoRepository.findById(id);
-        if (existingCourse.isPresent()) {
-            Curso cursoToUpdate = existingCourse.get();
-            cursoToUpdate.setCodigo(curso.getCodigo());
-            cursoToUpdate.setNombre(curso.getNombre());
-            cursoToUpdate.setCapacidad(curso.getCapacidad());
-            cursoToUpdate.setHorario(curso.getHorario());
-            cursoToUpdate.setCiclo(curso.getCiclo());
-            return cursoRepository.save(cursoToUpdate);  // Guarda el curso actualizado
-        }
-        return null;  // Si el curso no existe, retornar null o lanzar excepción
+        curso.setId(id);
+        return cursoRepository.save(curso);
     }
 
-    // Eliminar un curso por ID
     @Override
     public void eliminar(Integer id) {
-        cursoRepository.deleteById(id);  // Elimina el curso por su ID
+        cursoRepository.deleteById(id);
     }
 }

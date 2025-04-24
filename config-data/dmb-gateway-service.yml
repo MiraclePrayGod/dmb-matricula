@@ -20,4 +20,11 @@ spring:
           uri: lb://dmb-curso  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
            - Path=/cursos/**
-
+        - id: ms-student  # El nombre de la ruta para enrutar las solicitudes
+          uri: lb://ms-student  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
+          predicates:
+            - Path=/estudiantes/**
+        - id: ms-matricula  # El nombre de la ruta para enrutar las solicitudes
+          uri: lb://ms-matricula  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
+          predicates:
+            - Path=/matricula/**
