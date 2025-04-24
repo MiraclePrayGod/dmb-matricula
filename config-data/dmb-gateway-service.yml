@@ -16,7 +16,7 @@ spring:
         locator:
           enable: true
       routes:
-        - id: dmb-curso  # El nombre de la ruta para enrutar las solicitudes
+        - id: ms-curso  # El nombre de la ruta para enrutar las solicitudes
           uri: lb://ms-curso  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
            - Path=/cursos/**
