@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ms-matricula
+    name: dmb-matricula-service
   datasource:
     url: jdbc:postgresql://localhost:5432/ms-matricula
     username: postgres
