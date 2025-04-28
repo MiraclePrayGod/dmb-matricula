@@ -17,14 +17,14 @@ spring:
           enable: true
       routes:
         - id: dmb-curso-service  # El nombre de la ruta para enrutar las solicitudes
-          uri: lb://ms-curso  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
+          uri: lb://dmb-curso-service  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
            - Path=/cursos/**
         - id: dmb-student-service  # El nombre de la ruta para enrutar las solicitudes
-          uri: lb://ms-student  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
+          uri: lb://dmb-student-service  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
             - Path=/estudiantes/**
         - id: dmb-matricula-service  # El nombre de la ruta para enrutar las solicitudes
-          uri: lb://ms-matricula  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
+          uri: lb://dmb-matricula-service  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
             - Path=/matriculas/**
