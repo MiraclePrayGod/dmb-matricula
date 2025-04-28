@@ -12,26 +12,18 @@ public class Curso {
     private Integer id;
     private String codigo;
     private String nombre;
-    private Integer capacidad;
-    private String horario;
-    private Integer ciclo;
+    private Integer capacidad;  // Ca
 
-    // Constructor con parámetros
-    public Curso(Integer id, String codigo, String nombre, Integer capacidad, String horario, Integer ciclo) {
+    public Curso(Integer id, String codigo, String nombre, Integer capacidad) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
         this.capacidad = capacidad;
-        this.horario = horario;
-        this.ciclo = ciclo;
     }
 
-    // Constructor vacío
     public Curso() {
-
     }
 
-    // Getters y Setters
     public Integer getId() {
         return id;
     }
@@ -62,21 +54,5 @@ public class Curso {
 
     public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-
-    public Integer getCiclo() {
-        return ciclo;
-    }
-
-    public void setCiclo(Integer ciclo) {
-        this.ciclo = ciclo;
     }
 }

@@ -10,10 +10,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/estudiantes")
-
 public class EstudianteController {
     @Autowired
     private EstudianteService estudianteService;
+
 
     @GetMapping
     public List<Estudiante> listar() {
@@ -32,11 +32,11 @@ public class EstudianteController {
 
     @PutMapping("/{id}")
     public Estudiante actualizar(@PathVariable Integer id, @RequestBody Estudiante estudiante) {
-        return estudianteService.actualizar(id, estudiante);
+        return   estudianteService.actualizar(id, estudiante);
     }
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Integer id) {
-        estudianteService.eliminar(id);
+        estudianteService .eliminar(id);
     }
 }

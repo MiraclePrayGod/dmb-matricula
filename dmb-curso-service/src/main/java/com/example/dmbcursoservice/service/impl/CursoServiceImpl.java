@@ -26,18 +26,32 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public Curso guardar(Curso matricula) {
-        return cursoRepository.save(matricula);
+    public Curso guardar(Curso curso) {
+        if (curso.getId() != null && cursoRepository.existsById(curso.getId()) ) {
+            throw new IllegalArgumentException("El código del curso ya está registrado");
+        }if (curso.getCapacidad()==null || curso.getCapacidad()<=0){
+            throw new IllegalArgumentException(
+                    "La capacidad del curso debe ser mayor que 0"
+            );
+        }
+        return cursoRepository.save(curso);
     }
+
 
     @Override
     public Curso actualizar(Integer id, Curso curso) {
+        if (!cursoRepository.existsById(id)) {
+            throw new RuntimeException("Curso no encontrado");
+        }
         curso.setId(id);
         return cursoRepository.save(curso);
     }
 
     @Override
     public void eliminar(Integer id) {
+        if (!cursoRepository.existsById(id)) {
+            throw new RuntimeException("Curso no encontrado");
+        }
         cursoRepository.deleteById(id);
     }
 }

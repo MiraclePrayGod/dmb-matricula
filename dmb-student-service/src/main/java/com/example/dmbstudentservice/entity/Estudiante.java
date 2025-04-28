@@ -1,44 +1,46 @@
 package com.example.dmbstudentservice.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-
 
 public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String documento;  // Número de documento, único
     private String nombre;
     private String carrera;
-    private String estado;
-    private Integer cicloActual;
+    private String estado;  // Activo o Inactivo
+    private String cicloActual;
 
-    // Constructor con parámetros
-    public Estudiante(Integer id, String nombre, String carrera, String estado, Integer cicloActual) {
+    public Estudiante() {
+    }
+
+    public Estudiante(Integer id, String documento, String nombre, String carrera, String estado, String cicloActual) {
         this.id = id;
+        this.documento = documento;
         this.nombre = nombre;
         this.carrera = carrera;
         this.estado = estado;
         this.cicloActual = cicloActual;
     }
 
-    // Constructor vacío
-    public Estudiante() {
-
-    }
-
-    // Getters y Setters
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
     public String getNombre() {
@@ -65,12 +67,11 @@ public class Estudiante {
         this.estado = estado;
     }
 
-    public Integer getCicloActual() {
+    public String getCicloActual() {
         return cicloActual;
     }
 
-    public void setCicloActual(Integer cicloActual) {
+    public void setCicloActual(String cicloActual) {
         this.cicloActual = cicloActual;
-
     }
 }

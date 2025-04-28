@@ -11,5 +11,4 @@ public interface MatriculaService {
     Matricula guardar (Matricula matricula);
     Matricula actualizar (Integer id,Matricula matricula);
     void eliminar (Integer id);
-
 }
