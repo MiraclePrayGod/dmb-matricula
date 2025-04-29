@@ -13,12 +13,12 @@ public class Estudiante {
     private String nombre;
     private String carrera;
     private String estado;  // Activo o Inactivo
-    private String cicloActual;
+    private Integer cicloActual;
 
     public Estudiante() {
     }
 
-    public Estudiante(Integer id, String documento, String nombre, String carrera, String estado, String cicloActual) {
+    public Estudiante(Integer id, String documento, String nombre, String carrera, String estado, Integer cicloActual) {
         this.id = id;
         this.documento = documento;
         this.nombre = nombre;
@@ -67,11 +67,11 @@ public class Estudiante {
         this.estado = estado;
     }
 
-    public String getCicloActual() {
+    public Integer getCicloActual() {
         return cicloActual;
     }
 
-    public void setCicloActual(String cicloActual) {
+    public void setCicloActual(Integer cicloActual) {
         this.cicloActual = cicloActual;
     }
 }

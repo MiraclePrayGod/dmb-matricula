@@ -29,9 +29,9 @@ public class Matricula {
     public Matricula(Integer id, Integer estudianteId, Integer ciclo, LocalDate fecha, List<MatriculaDetalle> detalles) {
         this.id = id;
         this.estudianteId = estudianteId;
-        this.ciclo = ciclo;
         this.fecha = fecha;
-        this.detalles = detalles;
+        this.ciclo = ciclo;
+        this.detalles=detalles;
     }
 
     // === Getters y setters ===

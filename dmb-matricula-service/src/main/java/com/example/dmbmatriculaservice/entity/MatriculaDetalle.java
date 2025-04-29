@@ -1,10 +1,9 @@
 package com.example.dmbmatriculaservice.entity;
 
-import com.example.dmbmatriculaservice.dto.Curso;
+import com.example.dmbmatriculaservice.dto.CursoDto;
+import com.example.dmbmatriculaservice.dto.CursoDto;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Fetch;
 
-import java.util.List;
 
 @Entity
 public class MatriculaDetalle {
@@ -15,20 +14,17 @@ public class MatriculaDetalle {
     private Integer cursoId;
 
     @Transient
-    private Curso curso;
-
-    @ManyToOne(fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
-    @JoinColumn(name = "matricula_Id")
-
-    private Matricula matriculas;
+    private CursoDto cursoDto;
 
     public MatriculaDetalle() {
 
     }
 
-    public MatriculaDetalle(Integer id, Integer cursoId) {
+    public MatriculaDetalle(Integer id, Integer cursoId,CursoDto cursoDto ) {
         this.id = id;
         this.cursoId = cursoId;
+        this.cursoDto = cursoDto;
+
     }
 
     public Integer getId() {
@@ -47,18 +43,13 @@ public class MatriculaDetalle {
         this.cursoId = cursoId;
     }
 
-    public Curso getCurso() {
-        return curso;
+    public CursoDto getCursoDto() {
+        return cursoDto;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public void setCursoDto(CursoDto cursoDto) {
+        this.cursoDto = cursoDto;
     }
-    public Matricula getMatriculas() {
-        return matriculas;
-    }
-    public void setMatriculas(Matricula matriculas) {
-        this.matriculas = matriculas;
-    }
+
 
 }

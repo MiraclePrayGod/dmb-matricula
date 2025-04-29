@@ -29,10 +29,6 @@ public class CursoServiceImpl implements CursoService {
     public Curso guardar(Curso curso) {
         if (curso.getId() != null && cursoRepository.existsById(curso.getId()) ) {
             throw new IllegalArgumentException("El código del curso ya está registrado");
-        }if (curso.getCapacidad()==null || curso.getCapacidad()<=0){
-            throw new IllegalArgumentException(
-                    "La capacidad del curso debe ser mayor que 0"
-            );
         }
         return cursoRepository.save(curso);
     }

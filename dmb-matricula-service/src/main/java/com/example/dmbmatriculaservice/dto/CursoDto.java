@@ -1,24 +1,20 @@
 package com.example.dmbmatriculaservice.dto;
 
-public class Curso {
+public class CursoDto {
     private Integer  id;
-    private String   nombre;
-    private String   horario;
-    private Integer  capacidad;
     private String   codigo;
-    private Integer  ciclo;
+    private String   nombre;
+    private Integer  capacidad;
 
-    public Curso() {
+    public CursoDto() {
 
     }
 
-    public Curso(Integer id, String nombre, String horario, Integer capacidad, String codigo, Integer ciclo) {
+    public CursoDto(Integer id,String codigo, String nombre, Integer capacidad ) {
         this.id = id;
-        this.nombre = nombre;
-        this.horario = horario;
-        this.capacidad = capacidad;
         this.codigo = codigo;
-        this.ciclo = ciclo;
+        this.nombre = nombre;
+        this.capacidad = capacidad;
     }
 
     public Integer getId() {
@@ -37,14 +33,6 @@ public class Curso {
         this.nombre = nombre;
     }
 
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-
     public Integer getCapacidad() {
         return capacidad;
     }
@@ -61,11 +49,4 @@ public class Curso {
         this.codigo = codigo;
     }
 
-    public Integer getCiclo() {
-        return ciclo;
-    }
-
-    public void setCiclo(Integer ciclo) {
-        this.ciclo = ciclo;
-    }
 }
