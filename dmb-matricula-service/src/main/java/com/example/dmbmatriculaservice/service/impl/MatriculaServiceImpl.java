@@ -9,7 +9,6 @@ import com.example.dmbmatriculaservice.repository.MatriculaRepository;
 import com.example.dmbmatriculaservice.service.MatriculaService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -46,7 +45,16 @@ public class MatriculaServiceImpl implements MatriculaService {
     public List<Matricula> FallBackMethodListar(Throwable t) {
         System.err.println("🚨 Fallback listarMatriculas activado: " + t.getMessage());
         // Retornamos lista vacía o con marcador
-        return new ArrayList<>();
+        Matricula fallback = new Matricula();
+        fallback.setId(-1);
+        Estudiante fallBackestudiante1 = new Estudiante();
+        fallBackestudiante1.setNombre(" ⚠️ Este servicio no esta disponaaible");
+        fallBackestudiante1.setEstado("Desconocido");
+
+        fallback.setEstudiante(fallBackestudiante1);
+        List<Matricula> fallbackList = new ArrayList<>();
+        fallbackList.add(fallback);
+        return fallbackList;
     }
 
     @Override
@@ -69,7 +77,16 @@ public class MatriculaServiceImpl implements MatriculaService {
 
     public Optional<Matricula> FallBackMethodBuscar(Integer id, Throwable t) {
         System.err.println("🚨 Fallback buscarMatricula activado para id " + id + ": " + t.getMessage());
-        return Optional.empty();
+        Matricula fallback = new Matricula();
+        fallback.setId(-1);
+        Estudiante fallBackestudiante1 = new Estudiante();
+        fallBackestudiante1.setNombre(" ⚠️ Este servicio no esta disponible");
+        fallBackestudiante1.setEstado("Desconocido");
+
+        fallback.setEstudiante(fallBackestudiante1);
+        fallback.setDetalles(new ArrayList<>());
+
+        return Optional.of(fallback);
     }
 
     @Override

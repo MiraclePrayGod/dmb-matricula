@@ -1,0 +1,30 @@
+server:
+  port: ${PORT:${SERVERS_PORT:0}}rm -rf .git
+
+
+spring:
+  application:
+    name: dmb-auth
+  datasource:
+    url: jdbc:mysql://localhost:3306/dmb_auth
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+
+eureka:
+  client:
+    serviceUrl:
+
+    defaultZone: ${EUREKA_URI:http://localhost:8090/eureka}
+  instance:
+
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

@@ -11,4 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface EstudianteFeing {
         @GetMapping("/{id}")
         ResponseEntity<Estudiante> obtenerPorId (@PathVariable Integer id);
+
+        
+        
 }
