@@ -2,16 +2,18 @@ spring:
   application:
     name: dmb-matricula-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/ms-matricula
-    username: postgres
-    password: 123456
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://localhost:3306/ms-matricula
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: false
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
 
 server:
   #port: 8086
