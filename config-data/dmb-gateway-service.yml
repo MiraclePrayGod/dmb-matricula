@@ -31,7 +31,7 @@ spring:
         - id: dmb-curso-service  # El nombre de la ruta para enrutar las solicitudes
           uri: lb://dmb-curso-service  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
-           - Path=/cursos/**
+            - Path=/cursos/**
           -filters:
            - AuthFilter
         - id: dmb-student-service  # El nombre de la ruta para enrutar las solicitudes
@@ -39,7 +39,7 @@ spring:
           predicates:
             - Path=/estudiantes/**
           -filters:
-          - AuthFilter
+           - AuthFilter
         - id: dmb-matricula-service  # El nombre de la ruta para enrutar las solicitudes
           uri: lb://dmb-matricula-service  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
