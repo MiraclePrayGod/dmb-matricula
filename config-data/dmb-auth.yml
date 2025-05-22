@@ -1,7 +1,5 @@
 server:
-
   port: ${PORT:${SERVERS_PORT:0}}
-
 spring:
   jpa:
     hibernate.ddl-auto: update

@@ -38,7 +38,7 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
             // Validate token using WebClient
             return webClient.build()
                     .post()
-                    .uri("http://ms-auth-service/auth/validate?token=" + chunks[1])
+                    .uri("http://dmb-auth/auth/validate?token=" + chunks[1])
                     .retrieve()
                     .bodyToMono(TokenDto.class)
                     .flatMap(tokenDto -> {
