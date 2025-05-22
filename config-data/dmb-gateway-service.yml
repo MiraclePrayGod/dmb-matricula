@@ -24,23 +24,23 @@ spring:
         locator:
           enable: true
       routes:
+        - id: dmb-auth  # El nombre de la ruta para enrutar las solicitudes
+          uri: lb://dmb-auth  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
+          predicates:
+            - Path=/auth/**
         - id: dmb-curso-service  # El nombre de la ruta para enrutar las solicitudes
           uri: lb://dmb-curso-service  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
            - Path=/cursos/**
           -filters:
-            - AuthFilter
+           - AuthFilter
         - id: dmb-student-service  # El nombre de la ruta para enrutar las solicitudes
           uri: lb://dmb-student-service  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
             - Path=/estudiantes/**
           -filters:
-            - AuthFilter
+          - AuthFilter
         - id: dmb-matricula-service  # El nombre de la ruta para enrutar las solicitudes
           uri: lb://dmb-matricula-service  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
           predicates:
             - Path=/matriculas/**
-        - id: dmb-auth  # El nombre de la ruta para enrutar las solicitudes
-          uri: lb://dmb-auth  # Enviar las solicitudes a dmb-curso a través de Eureka (Load Balancer)
-          predicates:
-            - Path=/auth/**

@@ -22,6 +22,7 @@ public class MatriculaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Matricula> buscar(@PathVariable Integer id) {
+
         return matriculaService.buscar(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
